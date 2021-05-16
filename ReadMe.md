@@ -5,10 +5,10 @@
 > 其实主要用来手机电脑传消息。。为什么不用QQ？Linux。
 
 ```bash
+yarn
+yarn build
 yarn start
 ```
-
-或点击run.bat
 
 # H5 启动 Debug 模式
 
