@@ -1,8 +1,6 @@
 # Messager
 
-匿名聊天室
-
-> 其实主要用来手机电脑传消息。。为什么不用QQ？Linux。
+文本传输
 
 ```bash
 yarn
