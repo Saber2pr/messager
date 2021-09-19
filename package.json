@@ -4,7 +4,8 @@
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "release": "yarn release"
   },
   "author": "saber2pr",
   "repository": {
@@ -36,6 +37,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "less-plugin-clean-css": "^1.5.1",
+    "standard-version": "^9.3.1",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.2",
     "ts-node": "^8.10.2",
