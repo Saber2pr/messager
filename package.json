@@ -1,11 +1,11 @@
 {
   "name": "messager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "release": "yarn release"
+    "release": "standard-version"
   },
   "author": "saber2pr",
   "repository": {
