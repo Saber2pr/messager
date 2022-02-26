@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2020-06-21 12:33:16
  * @Last Modified by: saber2pr
- * @Last Modified time: 2020-06-27 15:03:46
+ * @Last Modified time: 2022-02-26 17:05:52
  */
 import React, { useRef, useState, useEffect } from "react"
 import ReactDOM from "react-dom"
@@ -12,6 +12,7 @@ import axios from "axios"
 import { useInterval } from "react-use"
 import { rgb, scrollToBottom } from "./utils"
 import ClipboardJS from "clipboard"
+import Qrcode from 'qrcode.react'
 
 const request = axios.create({
   baseURL: "/api"
@@ -78,6 +79,7 @@ const Line = React.memo(
 
 export const App = () => {
   const ref = useRef<HTMLDivElement>()
+  const [showQrcode, setShowQrcode] = useState(false)
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const body: ISend = { message: ref.current.innerText }
@@ -87,11 +89,13 @@ export const App = () => {
   }
 
   const [mpl, containRef] = useRefreshMessagePool()
-
   return (
     <>
-      <header>Messager</header>
+      <header onClick={() => setShowQrcode(!showQrcode)}>
+        <u>Messager</u>
+      </header>
       <main>
+        {showQrcode && <Qrcode style={{margin: '1rem auto'}} value={location.href} />}
         <div ref={containRef} className="message-contain">
           {mpl.map(({ message }, i) => (
             <Line key={message + i} id={i}>

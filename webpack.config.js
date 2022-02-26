@@ -24,7 +24,8 @@ module.exports = WebpackConfig({
         pathRewrite: { "^/api": "/api" },
         changeOrigin: true
       }
-    }
+    },
+    writeToDisk: true
   },
   module: {
     rules: [

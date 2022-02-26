@@ -2,6 +2,13 @@
 
 文本传输
 
+```sh
+docker pull saber2pr/messager:tag
+docker run -d -p 3000:3000 -it saber2pr/messager:tag
+```
+
+# dev
+
 ```bash
 yarn
 yarn build
