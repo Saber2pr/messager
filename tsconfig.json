@@ -6,7 +6,8 @@
     "jsx": "react",
     "declaration": true,
     "outDir": "lib",
-    "lib": ["dom", "es2015"]
+    "lib": ["dom", "es2015"],
+    "types": ["./interface.d.ts"]
   },
   "exclude": ["node_modules", "lib"]
 }

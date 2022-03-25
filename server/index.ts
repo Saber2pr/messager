@@ -4,7 +4,6 @@
  * @Last Modified by: saber2pr
  * @Last Modified time: 2020-06-27 15:42:48
  */
-/// <reference path="../interface.d.ts" />
 import Koa from "koa"
 import KoaRouter from "koa-router"
 import { getLocalIP } from "./utils"
