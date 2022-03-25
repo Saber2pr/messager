@@ -62,6 +62,7 @@ app.listen(PORT, () => console.log(`http://${NETWORK_IP}:${PORT}`))
 
 // routes
 router.get(`/send`, async ctx => {
+  // @ts-ignore
   const { message } = ctx.query as ISend
   MessagePool.push({ message })
   ctx.body = message
