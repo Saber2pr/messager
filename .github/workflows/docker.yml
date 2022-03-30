@@ -15,6 +15,6 @@ jobs:
         run: |
           image=${GITHUB_REPOSITORY#*/}:${GITHUB_REF#refs/*/}
           docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
-          docker image build -t $image .
+          docker buildx build --platform linux/amd64 -t $image . --load
           docker tag $image ${{secrets.DOCKER_USER}}/$image
           docker push ${{secrets.DOCKER_USER}}/$image
