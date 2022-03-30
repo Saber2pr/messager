@@ -11,6 +11,14 @@ import { promisify } from "util"
 import { readFile } from "fs"
 import { join } from "path"
 
+type MessageQueue = Array<{
+  message: string
+}>
+
+interface ISend {
+  message: string
+}
+
 // fs
 const ReadFile = promisify(readFile)
 
