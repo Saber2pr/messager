@@ -1,6 +1,6 @@
 {
   "name": "messager",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
