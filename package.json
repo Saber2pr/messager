@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/messager",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
@@ -9,7 +9,7 @@
     "prepublishOnly": "yarn tsc && yarn build"
   },
   "bin": {
-    "samsg": "./lib/server"
+    "sa-msg": "./lib/server/index.js"
   },
   "files": [
     "lib",
