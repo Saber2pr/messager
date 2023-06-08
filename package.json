@@ -16,6 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/Saber2pr/messager.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/node": "^20.2.5",
