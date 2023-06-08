@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
     "release": "standard-version",
-    "prepublishOnly": "yarn tsc"
+    "prepublishOnly": "yarn tsc && yarn build"
   },
   "bin": {
     "sa-msg": "./lib/server"
