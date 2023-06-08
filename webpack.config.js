@@ -1,13 +1,17 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const CleanCSSPlugin = require("less-plugin-clean-css")
-const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
 
-const extractLess = new ExtractTextPlugin("style.min.css")
+const webpack = require('webpack')
+const webpackDevServer = require('webpack-dev-server')
 
-const { WebpackConfig, templateContent } = require("@saber2pr/webpack-configer")
+const publicPath = (resourcePath, context) =>
+  path.relative(path.dirname(resourcePath), context) + '/'
 
-module.exports = WebpackConfig({
+/**
+ * @type {webpack.Configuration}
+ */
+module.exports = {
   entry: "./src/app.tsx",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"]
@@ -29,49 +33,49 @@ module.exports = WebpackConfig({
   },
   module: {
     rules: [
+      // 使用babel编译js、jsx、ts、tsx
       {
-        test: /\.(ts|tsx)$/,
-        use: ["ts-loader"]
+        test: /\.(js|jsx|ts|tsx)$/,
+        use: ['babel-loader'],
       },
+      // 图片url处理
+      {
+        test: /\.(woff|svg|eot|ttf|png)$/,
+        use: ['url-loader'],
+      },
+      // css、less编译
       {
         test: /\.(css|less)$/,
-        use: extractLess.extract({
-          use: [
-            {
-              loader: "css-loader"
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath },
+          },
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
             },
-            {
-              loader: "less-loader",
-              options: {
-                plugins: [
-                  new CleanCSSPlugin({
-                    advanced: true
-                  })
-                ]
-              }
-            }
-          ],
-          fallback: "style-loader"
-        })
+          },
+        ],
       },
-      {
-        test: /\.(woff|svg|eot|ttf)$/,
-        use: ["url-loader"]
-      }
-    ]
+    ],
   },
   plugins: [
+    // index.html模板设置
     new HtmlWebpackPlugin({
-      templateContent: templateContent("Messager", {
-        injectBody: '<div id="root"></div>',
-        injectHead:
-          '<script async src="//saber2pr.top/test/tools/debug.min.js"></script>'
-      })
+      template: path.join(__dirname, 'template.html'),
     }),
-    extractLess
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: 'style.[id][hash].css',
+    }),
+    // webpack编译进度
+    new webpack.ProgressPlugin(),
   ],
   watchOptions: {
     aggregateTimeout: 1000,
     ignored: /node_modules|lib/
   }
-})
+}

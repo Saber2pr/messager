@@ -1,9 +1,5 @@
-/*
- * @Author: saber2pr
- * @Date: 2020-06-21 10:10:11
- * @Last Modified by: saber2pr
- * @Last Modified time: 2020-06-27 15:42:48
- */
+#!/usr/bin/env node
+
 import Koa from "koa"
 import KoaRouter from "koa-router"
 import { getLocalIP } from "./utils"
@@ -25,7 +21,7 @@ const ReadFile = promisify(readFile)
 // constant
 const NETWORK_IP = getLocalIP()
 const PORT = 3000
-const PATH_ROOT = process.cwd()
+const PATH_ROOT = join(__dirname, '../../')
 const PATH_API = "/api"
 const PATH_STATIC = "/build"
 
