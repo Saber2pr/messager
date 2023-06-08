@@ -9,7 +9,7 @@
     "prepublishOnly": "yarn tsc && yarn build"
   },
   "bin": {
-    "sa-msg": "./lib/server"
+    "samsg": "./lib/server"
   },
   "files": [
     "lib",
