@@ -8,6 +8,7 @@
     "lib": ["dom", "es2015", "esnext"],
     "baseUrl": ".",
     "skipLibCheck": true,
+    "outDir": "lib",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
@@ -16,7 +17,7 @@
     "allowUnusedLabels": false,
     "removeComments": false,
     "preserveConstEnums": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "skipDefaultLibCheck": true,
     "typeRoots": ["./node_modules/@types/", "./@types/"],
     "paths": {
