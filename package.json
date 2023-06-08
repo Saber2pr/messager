@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/messager",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
@@ -11,6 +11,10 @@
   "bin": {
     "sa-msg": "./lib/server"
   },
+  "files": [
+    "lib",
+    "build"
+  ],
   "author": "saber2pr",
   "repository": {
     "type": "git",
