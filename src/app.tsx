@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2020-06-21 12:33:16
  * @Last Modified by: saber2pr
- * @Last Modified time: 2023-08-19 15:08:31
+ * @Last Modified time: 2023-08-19 15:09:45
  */
 import React, { useRef, useState, useEffect } from "react"
 import ReactDOM from "react-dom"
@@ -22,7 +22,7 @@ const cache = {
   lastQueueLen: -1
 }
 
-const pendingMessage = { message: "等待连接中" }
+const pendingMessage = { message: "等待连接中", time: new Date().toLocaleString() }
 
 const useRefreshMessagePool = (): [
   MessageQueue,
