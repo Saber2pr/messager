@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/messager",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "scripts": {
     "start": "ts-node server/index",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
