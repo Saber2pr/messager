@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2020-06-21 12:33:16
  * @Last Modified by: saber2pr
- * @Last Modified time: 2022-02-26 17:05:52
+ * @Last Modified time: 2023-08-19 15:08:31
  */
 import React, { useRef, useState, useEffect } from "react"
 import ReactDOM from "react-dom"
@@ -50,7 +50,7 @@ const useRefreshMessagePool = (): [
 }
 
 const Line = React.memo(
-  ({ children, id }: { children: string; id: number }) => {
+  ({ children, id, time }: { children: string; id: number; time: string }) => {
     const ref = useRef<HTMLDivElement>()
     useEffect(() => {
       const cp = new ClipboardJS(ref.current)
@@ -58,13 +58,13 @@ const Line = React.memo(
     }, [])
     const clipId = "clipId-" + id
     return (
-      <pre
-        className="line"
+      <div className="line" style={{
+        backgroundColor: 'rgb(231 231 231)'
+      }}>
+        <span className="line-time">{time}</span>
+        <pre
         id={clipId}
-        style={{
-          backgroundColor: rgb()
-        }}
-      >
+        >
         {children}
         <i
           ref={ref}
@@ -73,6 +73,7 @@ const Line = React.memo(
           title="复制"
         />
       </pre>
+      </div>
     )
   }
 )
@@ -82,7 +83,7 @@ export const App = () => {
   const [showQrcode, setShowQrcode] = useState(false)
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const body: ISend = { message: ref.current.innerText }
+    const body: ISend = { message: ref.current.innerText, time: new Date().toLocaleString() }
     request.get("/send", {
       params: body
     })
@@ -97,8 +98,8 @@ export const App = () => {
       <main>
         {showQrcode && <Qrcode style={{margin: '1rem auto'}} value={location.href} />}
         <div ref={containRef} className="message-contain">
-          {mpl.map(({ message }, i) => (
-            <Line key={message + i} id={i}>
+          {mpl.map(({ message, time }, i) => (
+            <Line key={message + i} id={i} time={time}>
               {message}
             </Line>
           ))}
