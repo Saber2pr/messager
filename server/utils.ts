@@ -9,9 +9,12 @@ import { networkInterfaces } from "os"
 export function getLocalIP() {
   const interfaces = networkInterfaces()
   for (const name of Object.keys(interfaces)) {
+    if (!/^en/.test(name)) {
+      continue
+    }
     for (const interf of interfaces[name]) {
       const { address, family, internal } = interf
-      if (family === "IPv4" && !internal) {
+      if (family === 'IPv4' && !internal) {
         return address
       }
     }
