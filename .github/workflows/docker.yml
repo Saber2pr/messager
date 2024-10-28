@@ -18,3 +18,4 @@ jobs:
           docker image build -t $image .
           docker tag $image ${{secrets.DOCKER_USER}}/$image
           docker push ${{secrets.DOCKER_USER}}/$image
+c
